@@ -1,10 +1,11 @@
 import React, { useRef } from 'react';
-import { Base } from './index';
+import { Table as DataTable } from './index';
+import "../tailwind.css"
 
 const fetchPackages = async (query = "react") => {
     return new Promise(async (resolve, reject) => {
         try {
-            let response = await fetch(`https://api.npms.io/v/search?q=${query}`);
+            let response = await fetch(`https://api.npms.io/v2/search?q=${query}`);
             response = await response.json();
             resolve(response.results)
 
@@ -15,8 +16,8 @@ const fetchPackages = async (query = "react") => {
 };
 
 export default {
-    title: 'Tables/Base',
-    component: Base,
+    title: 'Tables/DataTable',
+    component: DataTable,
 };
 
 const Template = (args) => {
@@ -26,10 +27,10 @@ const Template = (args) => {
         filterable: false,
         columns: [
             {
-                label: 'Logged In On',
-                identifier: 'created_on',
+                label: 'Package Name',
+                identifier: 'name',
                 resolver: (d) => {
-                    return d.created_on;
+                    return d.package.name;
                 },
                 sortable: false,
                 filterable: {
@@ -37,10 +38,10 @@ const Template = (args) => {
                 },
             },
             {
-                label: 'Browser',
-                identifier: 'browser',
+                label: 'Publisher',
+                identifier: 'publisher',
                 resolver: (d) => {
-                    return d.browser;
+                    return d.package.publisher.username;
                 },
                 sortable: false,
                 filterable: {
@@ -48,67 +49,37 @@ const Template = (args) => {
                 },
             },
             {
-                label: 'Last Used',
+                label: 'Version',
                 identifier: 'last_used_human',
                 resolver: (d) => {
-                    return d.last_used_human;
+                    return d.package.version;
                 },
                 sortable: false,
                 filterable: {
                     type: 'text',
                 },
-            },
-            {
-                label: '',
-                filterable: {
-                    type: 'clear',
-                },
-                actions: true,
-                links: [
-                    {
-                        icon: (item) => {
-                            if (item.id === decoded.jti) {
-                                return (
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        Current
-                                    </span>
-                                );
-                            } else {
-                                return (
-                                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 hover:bg-red-200 text-red-700 hover:text-red-800">
-                                        Destroy{' '}
-                                        X
-                                    </span>
-                                );
-                            }
-                        },
-                        resolver: (item) => {
-                            alert("confirm delete")
-                        },
-                        condition: (item) => {
-                            return true;
-                        },
-                    },
-                ],
             },
         ],
     };
 
-    return <Base
-        ref={tableRef}
-        config={config}
-        defaultSortColumn={0}
-        perPage={1}
-        dataSource={async (params) => {
-            let response = await fetchPackages();
-            return {
-                data: response,
-                pagination: {
-                    total: 0,
-                },
-            };
-        }}
-    />
+    return (
+        <div className="w-1/2">
+            <DataTable
+                ref={tableRef}
+                config={config}
+                defaultSortColumn={0}
+                perPage={1}
+                dataSource={async (params) => {
+                    let response = await fetchPackages();
+                    return {
+                        data: response,
+                        pagination: {
+                            total: 0,
+                        },
+                    };
+                }}
+            />
+        </div>)
 }
 
 export const Basic = Template.bind({});

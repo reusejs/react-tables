@@ -6,23 +6,12 @@ function classNames(...classes) {
 
 const Row = forwardRef(function Row({ item, config, i }, ref) {
   return (
-    <tr
-      className="px-6 py-4 whitespace-nowrap"
-      key={`tr${i}`}
-      onClick={() => {
-        // console.log("On click");
-      }}
-    >
+    <tr className={i % 2 === 0 ? "bg-white" : "bg-gray-50"} key={`tr${i}`}>
       {config["columns"].map((c, j) => (
         <td
           key={`td${i}${j}`}
           className={classNames(
-            "px-6 py-4 whitespace-normal text-sm leading-5",
-            c.actions !== true && j === 0 ? "font-medium text-gray-900" : "",
-            c.actions !== true && j > 0 ? "text-gray-500" : "",
-            c.actions === true
-              ? ""
-              : "text-right font-medium flex items-center justify-end"
+            "px-6 py-4 whitespace-nowrap text-sm text-gray-500"
           )}
         >
           {c.actions !== true && c.resolver(item)}
