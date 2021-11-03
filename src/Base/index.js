@@ -109,12 +109,12 @@ const Table = React.forwardRef(function Table(
       {loading && <Skeleton count={10} />}
       {!loading && (
         <div className="flex flex-col">
-          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 h-96 overflow-y-scroll">
+          <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
-                    <tr>
+                  <thead className="bg-gray-50 w-full relative overflow-y-scroll">
+                    <tr className="w-full">
                       {config.columns.map((row, i) => (
                         <Header
                           label={row.label}
@@ -127,9 +127,14 @@ const Table = React.forwardRef(function Table(
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="h-64 overflow-y-scroll">
+                  <tbody
+                    className="w-full overflow-y-scroll"
+                    style={{
+                      maxHeight: "50vh",
+                    }}
+                  >
                     {config.filterable && (
-                      <tr className="bg-gray-50">
+                      <tr className="bg-gray-50 w-full">
                         {config.columns.map((row, i) => (
                           <Filter
                             filters={filters}

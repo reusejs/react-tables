@@ -90,7 +90,6 @@ const Header = forwardRef(function Header(
 
   return (
     <th
-      scope="col"
       className={classNames(
         identifier !== ""
           ? "px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
