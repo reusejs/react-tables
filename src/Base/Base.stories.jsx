@@ -2,12 +2,13 @@ import React, { useRef } from 'react';
 import { Table as DataTable } from './index';
 import "../tailwind.css"
 
-const fetchPackages = async (query = "react") => {
+const fetchPackages = async (params) => {
     return new Promise(async (resolve, reject) => {
+
         try {
-            let response = await fetch(`https://api.npms.io/v2/search?q=${query}`);
+            let response = await fetch(`https://api.npms.io/v2/search?q=${params.filters.name}&size=${params.per_page}&from=${(params.page - 1) * params.per_page}`);
             response = await response.json();
-            resolve(response.results)
+            resolve(response)
 
         } catch (error) {
             reject(error)
@@ -24,7 +25,7 @@ const Template = (args) => {
     const tableRef = useRef(null);
 
     const config = {
-        filterable: false,
+        filterable: true,
         columns: [
             {
                 label: 'Package Name',
@@ -44,9 +45,6 @@ const Template = (args) => {
                     return d.package.publisher.username;
                 },
                 sortable: false,
-                filterable: {
-                    type: 'text',
-                },
             },
             {
                 label: 'Version',
@@ -54,10 +52,7 @@ const Template = (args) => {
                 resolver: (d) => {
                     return d.package.version;
                 },
-                sortable: false,
-                filterable: {
-                    type: 'text',
-                },
+                sortable: false
             },
         ],
     };
@@ -68,13 +63,15 @@ const Template = (args) => {
                 ref={tableRef}
                 config={config}
                 defaultSortColumn={0}
-                perPage={1}
+                perPage={5}
                 dataSource={async (params) => {
-                    let response = await fetchPackages();
+                    let response = await fetchPackages(params);
+                    // console.log("params", params)
+
                     return {
-                        data: response,
+                        data: response.results,
                         pagination: {
-                            total: 0,
+                            total: response.total,
                         },
                     };
                 }}
