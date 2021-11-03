@@ -54,6 +54,14 @@ const Template = (args) => {
                 },
                 sortable: false
             },
+            {
+                label: '',
+                filterable: {
+                    type: 'clear',
+                },
+                actions: true,
+                links: []
+            }
         ],
     };
 
@@ -63,7 +71,7 @@ const Template = (args) => {
                 ref={tableRef}
                 config={config}
                 defaultSortColumn={0}
-                perPage={5}
+                perPage={20}
                 dataSource={async (params) => {
                     let response = await fetchPackages(params);
                     // console.log("params", params)
