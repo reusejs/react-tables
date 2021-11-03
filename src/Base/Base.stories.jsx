@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Table as DataTable } from './index';
+import Table from './index';
 import "../tailwind.css"
 
 const fetchPackages = async (params) => {
@@ -17,8 +17,8 @@ const fetchPackages = async (params) => {
 };
 
 export default {
-    title: 'Tables/DataTable',
-    component: DataTable,
+    title: 'Tables/Table',
+    component: Table,
 };
 
 const Template = (args) => {
@@ -67,7 +67,7 @@ const Template = (args) => {
 
     return (
         <div className="w-1/2">
-            <DataTable
+            <Table
                 ref={tableRef}
                 config={config}
                 defaultSortColumn={0}

@@ -198,4 +198,4 @@ const titleCase = (phrase) => {
     .join(" ");
 };
 
-export { Table, titleCase };
+export default Table;
