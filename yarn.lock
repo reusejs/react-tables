@@ -1379,6 +1379,11 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@reusejs/react-utils@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@reusejs/react-utils/-/react-utils-0.0.2.tgz#4072879a605d9c2484a9f3d35272a9227397e13d"
+  integrity sha512-z/vV7UmyHy9OMuZcQsrsyH49XMpCziWLtIW/xLp+jwBTyyGNlV2kIJHKLkLEF8Uf0EuB5J5BsoHiIJagifVzBQ==
+
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-babel/-/plugin-babel-5.3.0.tgz#9cb1c5146ddd6a4968ad96f209c50c62f92f9879"
@@ -8488,6 +8493,11 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-loading-skeleton@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-loading-skeleton/-/react-loading-skeleton-3.0.1.tgz#b1ccd07d18ade80ce5d5b1563f4232331efedf46"
+  integrity sha512-YL9tSV7w53HLd5aAPPjUGp9iqUJ5+yj8ZI//E1ES1OHrWy2mSCHTRPSc37u77Di+jWph6evGVNKBr3rpAnKwDQ==
 
 react-popper-tooltip@^3.1.1:
   version "3.1.1"
