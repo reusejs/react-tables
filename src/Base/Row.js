@@ -7,7 +7,7 @@ function classNames(...classes) {
 const Row = forwardRef(function Row({ item, config, i }, ref) {
   return (
     <tr
-      className={classNames("w-full", i % 2 === 0 ? "bg-white" : "bg-gray-50")}
+      className={classNames("", i % 2 === 0 ? "bg-white" : "bg-gray-50")}
       key={`tr${i}`}
     >
       {config["columns"].map((c, j) => (

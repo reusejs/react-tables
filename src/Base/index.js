@@ -127,14 +127,9 @@ const Table = React.forwardRef(function Table(
                       ))}
                     </tr>
                   </thead>
-                  <tbody
-                    className="w-full overflow-y-scroll"
-                    style={{
-                      maxHeight: "50vh",
-                    }}
-                  >
+                  <tbody>
                     {config.filterable && (
-                      <tr className="bg-gray-50 w-full">
+                      <tr className="bg-gray-50">
                         {config.columns.map((row, i) => (
                           <Filter
                             filters={filters}
