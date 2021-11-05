@@ -4,8 +4,6 @@ import "../tailwind.css"
 
 const fetchPackages = async (params) => {
 
-    console.log("Fetchpackages called", params)
-
     return new Promise(async (resolve, reject) => {
 
         try {
@@ -28,6 +26,7 @@ const Template = (args) => {
     const tableRef = useRef(null);
 
     const config = {
+        // rowEvenClasses: "bg-red-50",
         filterable: true,
         columns: [
             {
@@ -69,7 +68,7 @@ const Template = (args) => {
     };
 
     return (
-        <div className="w-1/2 bg-red-50 overflow-hidden">
+        <div className="w-1/2 overflow-hidden">
             <Table
                 ref={tableRef}
                 config={config}

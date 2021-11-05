@@ -1,20 +1,23 @@
 import React, { forwardRef } from "react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@reusejs/react-utils";
 
 const Row = forwardRef(function Row({ item, config, i }, ref) {
   return (
     <tr
-      className={classNames("", i % 2 === 0 ? "bg-white" : "bg-gray-50")}
+      className={classNames(
+        "",
+        i % 2 === 0
+          ? config.rowEvenClasses || "bg-white"
+          : config.rowOddClasses || "bg-gray-50"
+      )}
       key={`tr${i}`}
     >
       {config["columns"].map((c, j) => (
         <td
           key={`td${i}${j}`}
           className={classNames(
-            "px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+            config.rowTdClasses ||
+              "px-6 py-4 whitespace-nowrap text-sm text-gray-500"
           )}
         >
           {c.actions !== true && c.resolver(item)}

@@ -25,17 +25,11 @@ const Table = React.forwardRef(function Table(
     orderBy,
     setOrderBy,
     loading,
-    setLoading,
     data,
-    setData,
-    refresh,
     setRefresh,
-    currentPage,
     setCurrentPage,
     totalRecords,
-    setTotalRecords,
     filters,
-    setFilters,
     applyFilter,
   } = useDataTable({
     sortOrder,
@@ -64,9 +58,9 @@ const Table = React.forwardRef(function Table(
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead
-                    className={classNames(props.theadClasses || "bg-gray-50")}
+                    className={classNames(config.theadClasses || "bg-gray-50")}
                   >
-                    <tr className="w-full">
+                    <tr>
                       {config.columns.map((row, i) => (
                         <Header
                           label={row.label}
@@ -81,7 +75,11 @@ const Table = React.forwardRef(function Table(
                   </thead>
                   <tbody>
                     {config.filterable && (
-                      <tr className="bg-gray-50">
+                      <tr
+                        className={classNames(
+                          config.filterRowClasses || "bg-gray-50"
+                        )}
+                      >
                         {config.columns.map((row, i) => (
                           <Filter
                             filters={filters}
@@ -106,7 +104,10 @@ const Table = React.forwardRef(function Table(
                       ))
                     ) : (
                       <tr className="text-center bg-white">
-                        <td colSpan="6" className="py-32 text-2xl font-medium">
+                        <td
+                          colSpan={config.columns.length}
+                          className="py-32 text-2xl font-medium"
+                        >
                           No Data
                         </td>
                       </tr>

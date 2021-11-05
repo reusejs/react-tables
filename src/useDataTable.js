@@ -38,7 +38,6 @@ export default function ({
   }, [orderBy, filters, currentPage]);
 
   const fetchData = async () => {
-    console.log("Call fetchData");
     try {
       let r = await dataSource({
         per_page: perPage,
@@ -49,7 +48,7 @@ export default function ({
         ...params,
       });
 
-      console.log("Data r", r);
+      //   console.log("Data r", r);
 
       setRefresh(false);
       setTotalRecords(r.pagination.total);

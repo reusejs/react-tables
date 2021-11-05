@@ -1,8 +1,5 @@
 import React, { forwardRef } from "react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import { classNames } from "@reusejs/react-utils";
 
 function Disabled({ setSort }) {
   return (
