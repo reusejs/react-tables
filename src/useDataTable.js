@@ -48,8 +48,6 @@ export default function ({
         ...params,
       });
 
-      //   console.log("Data r", r);
-
       setRefresh(false);
       setTotalRecords(r.pagination.total);
       setData(r.data);
