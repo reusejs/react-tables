@@ -72,6 +72,7 @@ const Table = React.forwardRef(function Table(
                     <tr>
                       {config.columns.map((row, i) => (
                         <Header
+                          config={config}
                           label={row.label}
                           identifier={row.identifier}
                           sortable={row.sortable}
