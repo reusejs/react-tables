@@ -5,7 +5,7 @@ const Row = forwardRef(function Row({ item, config, i }, ref) {
   return (
     <tr
       className={classNames(
-        "",
+        item.itemClasses || "",
         i % 2 === 0
           ? config.rowEvenClasses || "bg-white"
           : config.rowOddClasses || "bg-gray-50"
