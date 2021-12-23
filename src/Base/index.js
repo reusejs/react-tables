@@ -17,6 +17,7 @@ const Table = React.forwardRef(function Table(
     perPage,
     params,
     sortOrder = "asc",
+    noDataComponent = "No Data",
     ...props
   },
   ref
@@ -83,7 +84,11 @@ const Table = React.forwardRef(function Table(
                       ))}
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody
+                    className={classNames(
+                      config.tbodyClasses || "overflow-y-auto"
+                    )}
+                  >
                     {config.filterable && (
                       <tr
                         className={classNames(
@@ -118,7 +123,7 @@ const Table = React.forwardRef(function Table(
                           colSpan={config.columns.length}
                           className="py-32 text-2xl font-medium"
                         >
-                          No Data
+                          {noDataComponent}
                         </td>
                       </tr>
                     )}
