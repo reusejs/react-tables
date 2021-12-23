@@ -17,7 +17,7 @@ const Table = React.forwardRef(function Table(
     perPage,
     params,
     sortOrder = "asc",
-    noDataComponent = () => "No Data",
+    noDataComponent = "No Data",
     ...props
   },
   ref

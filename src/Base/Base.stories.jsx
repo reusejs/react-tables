@@ -148,6 +148,7 @@ const Template = (args) => {
   return (
     <div className="w-1/2 overflow-hidden">
       <Table
+        {...args}
         ref={tableRef}
         config={config}
         defaultSortColumn={0}
@@ -218,27 +219,24 @@ const EmptyTemplate = (args) => {
         config={config}
         defaultSortColumn={0}
         perPage={20}
-        dataSource={async (params) => {
-          let response = [];
-          // console.log("params", params)
-
-          return {
-            data: [],
-            // pagination: {
-            //   total: ,
-            // },
-          };
-        }}
+        dataSource={() => ({
+          data: [],
+          pagination: {
+            total: 0,
+          },
+        })}
       />
     </div>
   );
 };
 
 export const Basic = Template.bind({});
-export const EmptyTable = EmptyTemplate.bind({});
+export const DefaultEmptyTable = EmptyTemplate.bind({});
+export const CustomeEmptyTable = EmptyTemplate.bind({});
 
 Basic.args = {};
-EmptyTable.args = {
+DefaultEmptyTable.args = {};
+CustomeEmptyTable.args = {
   noDataComponent: (
     <div className="flex flex-col items-center relative -top-14">
       <img
