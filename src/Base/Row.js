@@ -31,7 +31,7 @@ const Row = forwardRef(function Row({ item, config, i }, ref) {
                       link.resolver(item);
                     }}
                     className={classNames(
-                      "text-blue-500 hover:text-blue-900 capitalize inline-block cursor-pointer focus:outline-none flex items-center",
+                      "text-blue-500 hover:text-blue-900 capitalize cursor-pointer focus:outline-none inline-flex items-center",
                       i > 0 ? "ml-2" : ""
                     )}
                     key={`link${i}`}
